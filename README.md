@@ -34,16 +34,6 @@ APP_LOCALE=en
 APP_FALLBACK_LOCALE=en
 APP_FAKER_LOCALE=en_US
 
-APP_MAINTENANCE_DRIVER=file
-PHP_CLI_SERVER_WORKERS=4
-
-BCRYPT_ROUNDS=12
-
-LOG_CHANNEL=stack
-LOG_STACK=single
-LOG_DEPRECATIONS_CHANNEL=null
-LOG_LEVEL=debug
-
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -57,34 +47,16 @@ SESSION_ENCRYPT=false
 SESSION_PATH=/
 SESSION_DOMAIN=null
 
-BROADCAST_CONNECTION=log
-FILESYSTEM_DISK=local
+CACHE_STORE=database
 QUEUE_CONNECTION=database
 
-CACHE_STORE=database
-MEMCACHED_HOST=127.0.0.1
-
-REDIS_CLIENT=phpredis
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
 MAIL_MAILER=log
-MAIL_SCHEME=null
 MAIL_HOST=127.0.0.1
 MAIL_PORT=2525
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
-
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_DEFAULT_REGION=us-east-1
-AWS_BUCKET=
-AWS_USE_PATH_STYLE_ENDPOINT=false
-
-VITE_APP_NAME="${APP_NAME}"
 
 JWT_SECRET=0M6DRGdgv3IP2SIq3sFFK8pwYaWbIRC80TnSo2Sb8gmOhyK8y6gRCFHZwobRx6yr
 JWT_ALGO=HS256
@@ -126,4 +98,163 @@ http://localhost:8000
 ```
 
 Enjoy your Laravel application!
+
+---
+
+# API Documentation
+
+## Base URL
+```
+http://localhost:8000/api/v1
+```
+
+### Authentication
+
+#### User Login
+**Endpoint:**
+```
+POST /user/login
+```
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+#### User Logout
+**Endpoint:**
+```
+POST /user/logout
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+### Tasks Management
+
+#### Create a Task
+**Endpoint:**
+```
+POST /tasks
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Request Body:**
+```json
+{
+  "title": "New Task",
+  "description": "Task description",
+  "status": "pending"
+}
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+#### Get All Tasks
+**Endpoint:**
+```
+GET /tasks
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+#### Get a Specific Task
+**Endpoint:**
+```
+GET /tasks/{slug}
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+#### Update a Task
+**Endpoint:**
+```
+PUT /tasks/{slug}
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Request Body:**
+```json
+{
+  "title": "Updated Task",
+  "description": "Updated description",
+  "status": "completed"
+}
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
+#### Delete a Task
+**Endpoint:**
+```
+DELETE /tasks/{slug}
+```
+**Headers:**
+```
+Authorization: Bearer your-jwt-token
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Users authenticated successfully.",
+  "data": {}
+}
+```
+
 
